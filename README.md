@@ -25,7 +25,7 @@ This website serves as the online presence for Zapwiser, complementing its AI-dr
 
 ### Structure
 
-```
+```bash
 zapwiser_website/
 ├── assets/
 │   ├── css/
@@ -81,6 +81,77 @@ For production deployment, upload all files to your web hosting service.
 - User accounts for personalized tools
 - Mobile app integration
 
+## Deployment Guide
+
+### Deploying with Netlify and GitHub
+
+1. **GitHub Repository Setup**
+   - Initialize Git repository in project folder:
+
+     ```bash
+     git init
+     git add .
+     git commit -m "Initial commit for Zapwiser website"
+     ```
+
+   - Create a new repository on GitHub (e.g., zapwiser-website)
+   - Connect local repository to GitHub:
+
+     ```bash
+     git remote add origin https://github.com/yourusername/zapwiser-website.git
+     git push -u origin master
+     ```
+
+2. **Netlify Deployment**
+   - Sign up/login to [Netlify](https://www.netlify.com/)
+   - Select "Add new site" > "Import an existing project"
+   - Choose GitHub as Git provider and authorize
+   - Select your repository (zapwiser-website)
+   - Configure build settings:
+     - Owner: Your Netlify team
+     - Branch: master
+     - Base directory: (leave blank)
+     - Build command: (leave blank for static sites)
+     - Publish directory: / (root)
+   - Click "Deploy site"
+
+3. **Custom Domain Configuration**
+   - In Netlify dashboard, go to "Domain management" > "Add custom domain"
+   - Enter your domain (zapwiser.com) and verify
+   - Set up Netlify DNS for your domain
+
+4. **Updating GoDaddy Nameservers**
+   - Log in to GoDaddy
+   - Navigate to Domain Portfolio > zapwiser.com > DNS > Nameservers
+   - Select "I'll use my own nameservers"
+   - Enter Netlify nameservers:
+
+     ```text
+     dns1.p06.nsone.net
+     dns2.p06.nsone.net
+     dns3.p06.nsone.net
+     dns4.p06.nsone.net
+     ```
+
+   - Save changes
+   - Wait for DNS propagation (can take 24-48 hours)
+
+5. **Verification and SSL**
+   - Netlify automatically provisions SSL certificates once DNS is configured
+   - Once propagation is complete, your site will be available at zapwiser.com with HTTPS
+
+6. **Ongoing Updates**
+   - Make changes to your local code
+   - Commit and push to GitHub:
+
+     ```bash
+     git add .
+     git commit -m "Description of changes"
+     git push
+     ```
+
+   - Netlify automatically rebuilds and deploys your site
+
 ---
 
-© 2025 Zapwiser. All rights reserved.
+ 2025 Zapwiser. All rights reserved.
