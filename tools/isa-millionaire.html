@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISA Millionaire Calculator | Zapwiser</title>
+    <meta name="description" content="Calculate how long it will take to reach £1,000,000 in your ISA with Zapwiser's interactive ISA Millionaire calculator.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/isa-millionaire.css">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="../assets/images/logo.svg" alt="Zapwiser Logo">
+                    <span class="logo-text">Zapwiser</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../blog.html">Insights</a></li>
+                    <li><a href="../tools.html" class="active">Tools</a></li>
+                    <li><a href="../about.html">About</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Tool Header -->
+    <section class="tools-header">
+        <div class="container">
+            <h1>ISA Millionaire Calculator</h1>
+            <p>Calculate how long it will take to reach £1,000,000 in your ISA based on your contributions and investment returns.</p>
+        </div>
+    </section>
+
+    <!-- Calculator Content -->
+    <section class="featured" style="background-color: var(--light-gray);">
+        <div class="container">
+            <!-- Disclaimer Banner -->
+            <div style="background-color: rgba(255, 122, 0, 0.1); border-left: 4px solid var(--accent); padding: 1rem; margin-bottom: 2rem; border-radius: 5px;">
+                <p style="margin-bottom: 0;"><strong>Disclaimer:</strong> This calculator is for illustrative purposes only and does not constitute financial advice. Actual investment returns may vary. Always consult with a financial advisor before making investment decisions.</p>
+            </div>
+            
+            <div class="calculator-container">
+                <div class="input-container">
+                    <div class="input-group">
+                        <label for="contribution">Annual ISA Contribution (£)</label>
+                        <input type="number" id="contribution" min="1" step="100" value="20000">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="return">Annual Nominal Return (%)</label>
+                        <input type="number" id="return" min="0" step="0.1" value="9">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="inflation">Annual Inflation Rate (%)</label>
+                        <input type="number" id="inflation" min="0" step="0.1" value="3.5">
+                    </div>
+                    
+                    <button id="calculate" class="btn btn-primary">Calculate</button>
+                </div>
+                
+                <div class="results-container">
+                    <div id="years-to-million" class="result-box">
+                        <h2>Years to £1 Million</h2>
+                        <p id="years-result">-</p>
+                        <span>Nominal Value</span>
+                    </div>
+                    
+                    <div id="years-to-real-million" class="result-box">
+                        <h2>Years to £1 Million in Today's Value</h2>
+                        <p id="years-real-result">-</p>
+                        <span>Inflation-Adjusted</span>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="investment-chart"></canvas>
+                </div>
+            </div>
+            
+            <div class="tool-explanation">
+                <h3>Understanding the ISA Millionaire Calculator</h3>
+                
+                <p>This calculator helps you determine how long it will take to reach £1,000,000 in your ISA based on your annual contributions and expected investment returns.</p>
+                
+                <h4>Input Parameters:</h4>
+                <ul>
+                    <li><strong>Annual ISA Contribution:</strong> The amount you contribute to your ISA each year (maximum allowance currently £20,000).</li>
+                    <li><strong>Annual Nominal Return:</strong> The expected annual return on your investments before adjusting for inflation.</li>
+                    <li><strong>Annual Inflation Rate:</strong> The expected rate at which the purchasing power of money decreases over time.</li>
+                </ul>
+                
+                <h4>Results Explained:</h4>
+                <ul>
+                    <li><strong>Years to £1 Million (Nominal Value):</strong> The number of years it will take for your ISA to reach £1,000,000 in nominal terms.</li>
+                    <li><strong>Years to £1 Million in Today's Value:</strong> The number of years it will take for your ISA to reach the equivalent of £1,000,000 in today's purchasing power, adjusted for inflation.</li>
+                </ul>
+                
+                <p>The chart displays both the nominal value of your ISA and its inflation-adjusted real value over time, allowing you to visualize your progress towards becoming an ISA millionaire.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../assets/images/logo-white.svg" alt="Zapwiser Logo">
+                    <h2>Zapwiser</h2>
+                    <p>Smart insights for savvy investors</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../blog.html">Insights</a></li>
+                        <li><a href="../tools.html">Tools</a></li>
+                        <li><a href="../about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Stay Updated</h3>
+                    <p>Subscribe to our weekly newsletter</p>
+                    <form>
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Zapwiser. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/isa-millionaire.js"></script>
+</body>
+</html>

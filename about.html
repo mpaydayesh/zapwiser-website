@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Zapwiser | Financial Insights & Tools</title>
+    <meta name="description" content="Learn about Zapwiser's mission to provide accessible financial insights, market analysis, and interactive tools.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/newsletter.css">
+    
+    <!-- Additional CSS for About Page -->
+    <style>
+        .about-header {
+            background: linear-gradient(rgba(27, 47, 93, 0.8), rgba(58, 95, 160, 0.8)), url('https://via.placeholder.com/1600x400?text=About+Zapwiser');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .about-section {
+            padding: 4rem 0;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .mission-values {
+            background-color: var(--white);
+            padding: 4rem 0;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .team-section {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .team-name {
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-role {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .team-bio {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .team-social a {
+            color: var(--navy);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .team-social a:hover {
+            color: var(--accent);
+        }
+        
+        .contact-section {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-form {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: var(--font-primary);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-info {
+            padding: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-right: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .faq-section {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .faq-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question::after {
+            content: '\f107';
+            font-family: 'Font Awesome 5 Free';
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-question.active::after {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            display: none;
+        }
+        
+        .faq-answer.show {
+            display: block;
+        }
+        
+        @media (max-width: 992px) {
+            .about-content, 
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="assets/images/logo.svg" alt="Zapwiser Logo">
+                    <span class="logo-text">Zapwiser</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Insights</a></li>
+                    <li><a href="tools.html">Tools</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Header -->
+    <section class="about-header">
+        <div class="container">
+            <h1>About Zapwiser</h1>
+            <p>Your trusted source for weekly market insights, in-depth analysis, and interactive financial tools.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/600x400?text=Zapwiser+Story" alt="Zapwiser Story">
+                </div>
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Zapwiser was born from a simple observation: while financial information is abundant, truly actionable insights that are accessible to everyday investors are rare.</p>
+                    <p>Founded in 2024 by a team of finance professionals and technology enthusiasts, Zapwiser aims to bridge this gap by providing clear, concise, and actionable market insights that help investors make informed decisions.</p>
+                    <p>Our AI-driven approach combines deep market analysis with clear communication, making complex financial concepts understandable without oversimplifying the nuances that matter.</p>
+                    <p>Today, we're proud to serve a growing community of investors who rely on our weekly round-ups, in-depth analysis, and interactive tools to navigate the ever-changing financial landscape.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values -->
+    <section class="mission-values">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Mission & Values</h2>
+            </div>
+            <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                <p>Our mission is to democratize financial intelligence by delivering actionable market insights and powerful tools that help everyday investors make smarter decisions.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Clarity</h3>
+                    <p>We cut through market noise to deliver clear, actionable insights without unnecessary jargon.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Depth</h3>
+                    <p>Our analysis goes beyond surface-level headlines to provide the context and nuance that matters.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>We maintain strict editorial independence and transparency in all our content and recommendations.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Accessibility</h3>
+                    <p>We believe financial intelligence should be accessible to everyone, not just Wall Street professionals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+            </div>
+            <div class="text-center" style="max-width: 800px; margin: 0 auto 3rem;">
+                <p>Zapwiser brings together experts from finance, technology, and media to deliver exceptional financial insights and tools.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://via.placeholder.com/400x400?text=Alex+Morgan" alt="Alex Morgan">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Alex Morgan</h3>
+                        <div class="team-role">Founder & CEO</div>
+                        <p class="team-bio">Former hedge fund analyst with 12+ years of experience in global markets. Alex leads Zapwiser's strategic vision and financial analysis.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://via.placeholder.com/400x400?text=Sarah+Chen" alt="Sarah Chen">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Sarah Chen</h3>
+                        <div class="team-role">Head of Research</div>
+                        <p class="team-bio">Economist and financial analyst specializing in emerging markets and macroeconomic trends. Sarah oversees our research methodology and content quality.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://via.placeholder.com/400x400?text=James+Wilson" alt="James Wilson">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">James Wilson</h3>
+                        <div class="team-role">Chief Technology Officer</div>
+                        <p class="team-bio">Tech innovator with expertise in AI and financial data analysis. James leads the development of our interactive tools and algorithms.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://via.placeholder.com/400x400?text=Maya+Patel" alt="Maya Patel">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Maya Patel</h3>
+                        <div class="team-role">Content Director</div>
+                        <p class="team-bio">Award-winning financial journalist with a talent for making complex topics accessible. Maya oversees our content strategy and editorial direction.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get in Touch</h2>
+            </div>
+            <div class="text-center" style="max-width: 800px; margin: 0 auto 3rem;">
+                <p>Have questions, feedback, or partnership inquiries? We'd love to hear from you.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@zapwiser.com</p>
+                            <p>support@zapwiser.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>123 Financial District</p>
+                            <p>New York, NY 10005</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Monday - Friday: 9AM - 5PM EST</p>
+                            <p>Weekend: Closed</p>
+                        </div>
+                    </div>
+                    <div class="social-links" style="margin-top: 2rem;">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">Is Zapwiser's content financial advice?</div>
+                    <div class="faq-answer">
+                        <p>No, all content on Zapwiser is for informational and educational purposes only. We provide market analysis and insights, but we do not provide personalized investment advice. Always consult with a qualified financial advisor before making investment decisions.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How often is your content updated?</div>
+                    <div class="faq-answer">
+                        <p>We publish weekly market round-ups every Monday, and in-depth analysis pieces throughout the week. Our market data and interactive tools are updated daily during market hours.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer a premium subscription?</div>
+                    <div class="faq-answer">
+                        <p>While much of our content is freely available, we do offer Zapwiser Pro, a premium subscription that provides access to advanced tools, exclusive research, and personalized features. Visit our pricing page to learn more.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I suggest topics for future analysis?</div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We welcome topic suggestions from our community. You can submit your ideas through our contact form or by emailing content@zapwiser.com.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you have a mobile app?</div>
+                    <div class="faq-answer">
+                        <p>We're currently developing our mobile app for iOS and Android, which will be released in Q3 2025. In the meantime, our website is fully responsive and optimized for mobile browsing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <h2>Join Our Community</h2>
+            <p>Subscribe to our newsletter and join thousands of investors who receive our weekly market insights.</p>
+            <form class="newsletter-form" id="newsletter-form">
+                <div class="newsletter-form-row">
+                    <input type="text" name="firstName" placeholder="First Name" required>
+                    <input type="text" name="lastName" placeholder="Last Name" required>
+                </div>
+                <div class="newsletter-form-row">
+                    <input type="email" name="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </div>
+                <div id="newsletter-message" class="newsletter-message" style="display: none;"></div>
+            </form>
+            <div class="form-note">
+                <p>We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="logo">
+                        <img src="assets/images/logo.svg" alt="Zapwiser Logo" style="height: 30px;">
+                        <span class="logo-text">Zapwiser</span>
+                    </div>
+                    <p>Your trusted source for weekly market insights, in-depth analysis, and interactive financial tools.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Insights</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Market Data</a></li>
+                        <li><a href="#">Glossary</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Stay Updated</h3>
+                    <p>Join our newsletter to receive the latest market insights and analysis.</p>
+                    <p>Subscribe to our newsletter using the form in the <a href="#newsletter">Join Our Community</a> section above.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Zapwiser. All rights reserved.</p>
+                <p><small>Disclaimer: All information provided is for educational purposes only and does not constitute financial advice.</small></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/google-sheet-integration.js"></script>
+    
+    <!-- About Page JavaScript -->
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const answer = this.nextElementSibling;
+                answer.classList.toggle('show');
+            });
+        });
+        
+        // Contact Form Handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real implementation, this would send the form data to a server
+            alert('Thank you for your message! We\'ll get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

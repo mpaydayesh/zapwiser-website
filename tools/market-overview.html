@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Overview | Zapwiser</title>
+    <meta name="description" content="Track real-time market data and key index performance with Zapwiser's interactive market overview tool.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Additional CSS for Tool Page -->
+    <style>
+        .tool-header-banner {
+            background: linear-gradient(rgba(27, 47, 93, 0.8), rgba(58, 95, 160, 0.8)), url('https://via.placeholder.com/1600x400?text=Market+Overview');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .breadcrumb {
+            display: flex;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--navy);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: #777;
+        }
+        
+        .tool-container {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .data-item {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .data-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .data-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .data-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            margin: 2rem 0;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .filter-tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .filter-tab.active {
+            color: var(--accent);
+        }
+        
+        .filter-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .market-news {
+            margin-top: 3rem;
+        }
+        
+        .news-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .news-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-source {
+            background-color: var(--light-blue);
+            color: var(--navy);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-right: 1rem;
+        }
+        
+        .news-time {
+            font-size: 0.8rem;
+            color: #777;
+        }
+        
+        .news-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .data-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .filter-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .filter-tab {
+                padding: 0.8rem 1rem;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="../assets/images/logo.svg" alt="Zapwiser Logo">
+                    <span class="logo-text">Zapwiser</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../blog.html">Insights</a></li>
+                    <li><a href="../tools.html" class="active">Tools</a></li>
+                    <li><a href="../about.html">About</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Tool Header -->
+    <section class="tool-header-banner">
+        <div class="container">
+            <h1>Market Overview</h1>
+            <p>Real-time market data and key index performance</p>
+        </div>
+    </section>
+
+    <!-- Tool Content -->
+    <section class="featured" style="background-color: var(--light-gray);">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span>/</span>
+                <a href="../tools.html">Tools</a>
+                <span>/</span>
+                <a href="#" class="active">Market Overview</a>
+            </div>
+            
+            <!-- Disclaimer Banner -->
+            <div style="background-color: rgba(255, 122, 0, 0.1); border-left: 4px solid var(--accent); padding: 1rem; margin-bottom: 2rem; border-radius: 5px;">
+                <p style="margin-bottom: 0;"><strong>Disclaimer:</strong> All market data is provided for informational purposes only and may be delayed. Always verify with official sources before making investment decisions.</p>
+            </div>
+            
+            <!-- Main Indices Tool Container -->
+            <div class="tool-container">
+                <h2>Market Indices</h2>
+                <p>A snapshot of key market indices performance. Updated every 15 minutes during market hours.</p>
+                
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-value" id="sp500-value">4,782.41</div>
+                        <div class="data-label">S&P 500</div>
+                        <div style="color: #4CAF50; font-size: 0.9rem;">+0.87%</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value" id="dow-value">38,412.15</div>
+                        <div class="data-label">Dow Jones</div>
+                        <div style="color: #4CAF50; font-size: 0.9rem;">+0.63%</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value" id="nasdaq-value">16,742.39</div>
+                        <div class="data-label">NASDAQ</div>
+                        <div style="color: #4CAF50; font-size: 0.9rem;">+1.24%</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value" id="russell-value">2,142.68</div>
+                        <div class="data-label">Russell 2000</div>
+                        <div style="color: #4CAF50; font-size: 0.9rem;">+0.52%</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value" id="vix-value">14.21</div>
+                        <div class="data-label">VIX</div>
+                        <div style="color: #F44336; font-size: 0.9rem;">-5.12%</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value" id="tnx-value">4.32%</div>
+                        <div class="data-label">10-Year Treasury</div>
+                        <div style="color: #F44336; font-size: 0.9rem;">-0.07%</div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <p><small>Last updated: March 24, 2025 at 14:30 EST</small></p>
+                </div>
+            </div>
+            
+            <!-- Chart Tool Container -->
+            <div class="tool-container">
+                <h2>Market Performance</h2>
+                
+                <div class="filter-tabs">
+                    <div class="filter-tab active" data-period="1d">1 Day</div>
+                    <div class="filter-tab" data-period="5d">5 Days</div>
+                    <div class="filter-tab" data-period="1m">1 Month</div>
+                    <div class="filter-tab" data-period="3m">3 Months</div>
+                    <div class="filter-tab" data-period="6m">6 Months</div>
+                    <div class="filter-tab" data-period="1y">1 Year</div>
+                    <div class="filter-tab" data-period="ytd">YTD</div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="marketChart"></canvas>
+                </div>
+                
+                <div style="text-align: center;">
+                    <button class="btn btn-outline" id="toggle-indices">
+                        <i class="fas fa-eye"></i> Toggle Indices
+                    </button>
+                    <button class="btn btn-outline" id="download-data">
+                        <i class="fas fa-download"></i> Download Data
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sector Performance -->
+            <div class="tool-container">
+                <h2>Sector Performance</h2>
+                <p>Performance of major market sectors compared to the S&P 500 index.</p>
+                
+                <div class="chart-container">
+                    <canvas id="sectorChart"></canvas>
+                </div>
+                
+                <div class="data-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+                    <div class="data-item">
+                        <div class="data-value" style="color: #4CAF50;">+1.54%</div>
+                        <div class="data-label">Technology</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value" style="color: #4CAF50;">+1.21%</div>
+                        <div class="data-label">Healthcare</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value" style="color: #4CAF50;">+0.87%</div>
+                        <div class="data-label">Financials</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value" style="color: #4CAF50;">+0.63%</div>
+                        <div class="data-label">Consumer Staples</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value" style="color: #F44336;">-0.32%</div>
+                        <div class="data-label">Energy</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value" style="color: #4CAF50;">+0.15%</div>
+                        <div class="data-label">Utilities</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value" style="color: #4CAF50;">+0.78%</div>
+                        <div class="data-label">Industrials</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-value" style="color: #4CAF50;">+0.44%</div>
+                        <div class="data-label">Real Estate</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Market News -->
+            <div class="tool-container">
+                <h2>Market News</h2>
+                <p>Latest news that might impact market performance.</p>
+                
+                <div class="market-news">
+                    <div class="news-item">
+                        <div class="news-heading">
+                            <span class="news-source">Market Wire</span>
+                            <span class="news-time">1 hour ago</span>
+                        </div>
+                        <h3 class="news-title">Fed Signals Potential Rate Cuts in June Meeting</h3>
+                        <p>Federal Reserve officials hinted at potential interest rate cuts in their upcoming June meeting, citing moderating inflation and economic stability as key factors in their decision-making process.</p>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="news-heading">
+                            <span class="news-source">Financial Times</span>
+                            <span class="news-time">3 hours ago</span>
+                        </div>
+                        <h3 class="news-title">Tech Earnings Exceed Analyst Expectations</h3>
+                        <p>Major technology companies reported quarterly earnings that surpassed analyst expectations, driving the sector to outperform the broader market as investors responded positively to strong revenue growth and optimistic guidance.</p>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="news-heading">
+                            <span class="news-source">Bloomberg</span>
+                            <span class="news-time">5 hours ago</span>
+                        </div>
+                        <h3 class="news-title">Energy Stocks Under Pressure as Oil Prices Decline</h3>
+                        <p>Energy sector stocks faced downward pressure as crude oil prices declined following reports of increased production from major oil-producing nations, potentially impacting future profit margins for companies in the sector.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Related Tools You Might Like</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Investment Calculator</h3>
+                    <p>Estimate potential returns on your investments over time with our interactive calculator.</p>
+                    <a href="investment-calculator.html" class="btn btn-outline">Explore Tool</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <h3>Stock Screener</h3>
+                    <p>Find investment opportunities based on your criteria with our advanced stock screening tool.</p>
+                    <a href="stock-screener.html" class="btn btn-outline">Explore Tool</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Market Sentiment Analysis</h3>
+                    <p>Track investor sentiment and market mood with our AI-powered sentiment analysis tool.</p>
+                    <a href="market-sentiment.html" class="btn btn-outline">Explore Tool</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../assets/images/logo.svg" alt="Zapwiser Logo">
+                    <h3>Zapwiser</h3>
+                    <p>Insightful market analysis and powerful financial tools</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../blog.html">Insights</a></li>
+                        <li><a href="../tools.html">Tools</a></li>
+                        <li><a href="../about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our weekly market insights</p>
+                    <form>
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Zapwiser. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    
+    <!-- Market Overview JavaScript -->
+    <script>
+        // Market Overview Chart
+        const marketCtx = document.getElementById('marketChart').getContext('2d');
+        const marketChart = new Chart(marketCtx, {
+            type: 'line',
+            data: {
+                labels: ['9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30'],
+                datasets: [{
+                    label: 'S&P 500',
+                    data: [4750, 4755, 4760, 4752, 4758, 4765, 4770, 4775, 4778, 4780, 4782],
+                    borderColor: '#1B2F5D',
+                    backgroundColor: 'rgba(27, 47, 93, 0.1)',
+                    tension: 0.3,
+                    fill: false
+                }, {
+                    label: 'NASDAQ',
+                    data: [16650, 16670, 16690, 16675, 16695, 16710, 16720, 16730, 16735, 16740, 16742],
+                    borderColor: '#3A5FA0',
+                    backgroundColor: 'rgba(58, 95, 160, 0.1)',
+                    tension: 0.3,
+                    fill: false
+                }, {
+                    label: 'Dow Jones',
+                    data: [38350, 38360, 38370, 38365, 38380, 38390, 38395, 38400, 38405, 38410, 38412],
+                    borderColor: '#82A1DA',
+                    backgroundColor: 'rgba(130, 161, 218, 0.1)',
+                    tension: 0.3,
+                    fill: false,
+                    hidden: true
+                }, {
+                    label: 'Russell 2000',
+                    data: [2130, 2132, 2135, 2134, 2137, 2139, 2140, 2141, 2142, 2142, 2143],
+                    borderColor: '#FF7A00',
+                    backgroundColor: 'rgba(255, 122, 0, 0.1)',
+                    tension: 0.3,
+                    fill: false,
+                    hidden: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        usePointStyle: true
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+        
+        // Sector Performance Chart
+        const sectorCtx = document.getElementById('sectorChart').getContext('2d');
+        const sectorChart = new Chart(sectorCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Technology', 'Healthcare', 'Financials', 'Consumer Staples', 'Energy', 'Utilities', 'Industrials', 'Real Estate'],
+                datasets: [{
+                    label: 'Daily Performance (%)',
+                    data: [1.54, 1.21, 0.87, 0.63, -0.32, 0.15, 0.78, 0.44],
+                    backgroundColor: [
+                        'rgba(76, 175, 80, 0.8)',
+                        'rgba(76, 175, 80, 0.8)',
+                        'rgba(76, 175, 80, 0.8)',
+                        'rgba(76, 175, 80, 0.8)',
+                        'rgba(244, 67, 54, 0.8)',
+                        'rgba(76, 175, 80, 0.8)',
+                        'rgba(76, 175, 80, 0.8)',
+                        'rgba(76, 175, 80, 0.8)'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Filter tabs functionality
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.filter-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Update chart based on selected period
+                const period = this.getAttribute('data-period');
+                updateChartData(period);
+            });
+        });
+        
+        // Toggle indices button functionality
+        document.getElementById('toggle-indices').addEventListener('click', function() {
+            marketChart.data.datasets.forEach(dataset => {
+                dataset.hidden = !dataset.hidden;
+            });
+            marketChart.update();
+        });
+        
+        // Download data button functionality
+        document.getElementById('download-data').addEventListener('click', function() {
+            alert('Data download functionality will be available soon.');
+        });
+        
+        // Function to update chart data based on selected period
+        function updateChartData(period) {
+            // In a real application, this would fetch data from an API
+            // For demonstration purposes, we'll just update with dummy data
+            let labels = [];
+            let sp500Data = [];
+            let nasdaqData = [];
+            let dowData = [];
+            let russellData = [];
+            
+            switch(period) {
+                case '1d':
+                    labels = ['9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30'];
+                    sp500Data = [4750, 4755, 4760, 4752, 4758, 4765, 4770, 4775, 4778, 4780, 4782];
+                    nasdaqData = [16650, 16670, 16690, 16675, 16695, 16710, 16720, 16730, 16735, 16740, 16742];
+                    dowData = [38350, 38360, 38370, 38365, 38380, 38390, 38395, 38400, 38405, 38410, 38412];
+                    russellData = [2130, 2132, 2135, 2134, 2137, 2139, 2140, 2141, 2142, 2142, 2143];
+                    break;
+                case '5d':
+                    labels = ['Mar 20', 'Mar 21', 'Mar 22', 'Mar 23', 'Mar 24'];
+                    sp500Data = [4740, 4755, 4770, 4775, 4782];
+                    nasdaqData = [16650, 16680, 16700, 16720, 16742];
+                    dowData = [38300, 38340, 38370, 38390, 38412];
+                    russellData = [2125, 2130, 2135, 2140, 2143];
+                    break;
+                case '1m':
+                    labels = ['Feb 24', 'Mar 1', 'Mar 6', 'Mar 11', 'Mar 16', 'Mar 21', 'Mar 24'];
+                    sp500Data = [4700, 4710, 4730, 4745, 4760, 4770, 4782];
+                    nasdaqData = [16550, 16580, 16620, 16650, 16700, 16720, 16742];
+                    dowData = [38200, 38240, 38280, 38320, 38360, 38390, 38412];
+                    russellData = [2110, 2115, 2120, 2125, 2135, 2140, 2143];
+                    break;
+                // Add cases for other periods
+                default:
+                    // Use default data (1d)
+                    labels = ['9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30'];
+                    sp500Data = [4750, 4755, 4760, 4752, 4758, 4765, 4770, 4775, 4778, 4780, 4782];
+                    nasdaqData = [16650, 16670, 16690, 16675, 16695, 16710, 16720, 16730, 16735, 16740, 16742];
+                    dowData = [38350, 38360, 38370, 38365, 38380, 38390, 38395, 38400, 38405, 38410, 38412];
+                    russellData = [2130, 2132, 2135, 2134, 2137, 2139, 2140, 2141, 2142, 2142, 2143];
+            }
+            
+            marketChart.data.labels = labels;
+            marketChart.data.datasets[0].data = sp500Data;
+            marketChart.data.datasets[1].data = nasdaqData;
+            marketChart.data.datasets[2].data = dowData;
+            marketChart.data.datasets[3].data = russellData;
+            
+            marketChart.update();
+        }
+    </script>
+</body>
+</html>

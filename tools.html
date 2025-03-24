@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Financial Tools | Zapwiser</title>
+    <meta name="description" content="Explore Zapwiser's interactive financial tools for market analysis and investment decision making.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Additional CSS for Tools Page -->
+    <style>
+        .tools-header {
+            background: linear-gradient(rgba(27, 47, 93, 0.8), rgba(58, 95, 160, 0.8)), url('https://via.placeholder.com/1600x400?text=Financial+Tools');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .tool-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tool-icon {
+            background-color: var(--light-blue);
+            color: var(--navy);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        .tool-description {
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .category-header {
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="assets/images/logo.svg" alt="Zapwiser Logo">
+                    <span class="logo-text">Zapwiser</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Insights</a></li>
+                    <li><a href="tools.html" class="active">Tools</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Tools Header -->
+    <section class="tools-header">
+        <div class="container">
+            <h1>Interactive Financial Tools</h1>
+            <p>Powerful tools to help you make informed investment decisions and analyze market data.</p>
+        </div>
+    </section>
+
+    <!-- Tools Content -->
+    <section class="featured" style="background-color: var(--light-gray);">
+        <div class="container">
+            <!-- Disclaimer Banner -->
+            <div style="background-color: rgba(255, 122, 0, 0.1); border-left: 4px solid var(--accent); padding: 1rem; margin-bottom: 2rem; border-radius: 5px;">
+                <p style="margin-bottom: 0;"><strong>Disclaimer:</strong> All tools and data provided are for informational purposes only and do not constitute financial advice. Always conduct your own research before making investment decisions.</p>
+            </div>
+            
+            <!-- Financial Calculators Category -->
+            <h2 class="category-header">Financial Calculators</h2>
+            <div class="tools-grid">
+                <!-- Investment Calculator Tool Card -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div>
+                            <h3>Investment Calculator</h3>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        <p>Estimate potential returns on your investments over time with compound interest, retirement planning, and inflation impact calculations.</p>
+                    </div>
+                    <div style="text-align: center; margin-top: auto;">
+                        <a href="tools/investment-calculator.html" class="btn btn-primary">Open Tool</a>
+                    </div>
+                </div>
+                
+                <!-- ISA Millionaire Calculator Tool Card -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-pound-sign"></i>
+                        </div>
+                        <div>
+                            <h3>ISA Millionaire Calculator</h3>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        <p>Calculate how long it will take to reach £1,000,000 in your ISA based on your contributions and investment returns.</p>
+                    </div>
+                    <div style="text-align: center; margin-top: auto;">
+                        <a href="tools/isa-millionaire.html" class="btn btn-primary">Open Tool</a>
+                    </div>
+                </div>
+                
+                <!-- Coming Soon: Tax Calculator -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-receipt"></i>
+                        </div>
+                        <div>
+                            <h3>Tax Calculator</h3>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        <p>Estimate your capital gains taxes on investments and optimize your tax strategy for maximum returns.</p>
+                    </div>
+                    <div style="text-align: center; margin-top: auto;">
+                        <span class="badge" style="background-color: var(--accent); padding: 0.3rem 0.8rem; border-radius: 20px; color: white; margin-bottom: 1rem; display: inline-block;">Coming Soon</span>
+                        <a href="#" class="btn btn-outline disabled">Open Tool</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Market Analysis Category -->
+            <h2 class="category-header">Market Analysis</h2>
+            <div class="tools-grid">
+                <!-- Market Overview Tool Card -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h3>Market Overview</h3>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        <p>Real-time market data and key index performance for major indices including S&P 500, Dow Jones, NASDAQ, and VIX volatility index.</p>
+                    </div>
+                    <div style="text-align: center; margin-top: auto;">
+                        <a href="tools/market-overview.html" class="btn btn-primary">Open Tool</a>
+                    </div>
+                </div>
+                
+                <!-- Market Sentiment Tool Card -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div>
+                            <h3>Market Sentiment Analysis</h3>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        <p>AI-powered market sentiment tracking and analysis to help you gauge investor mood and potential market direction.</p>
+                    </div>
+                    <div style="text-align: center; margin-top: auto;">
+                        <a href="tools/market-sentiment.html" class="btn btn-primary">Open Tool</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stock Tools Category -->
+            <h2 class="category-header">Stock Tools</h2>
+            <div class="tools-grid">
+                <!-- Stock Screener Tool Card -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <div>
+                            <h3>Stock Screener</h3>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        <p>Find investment opportunities based on your criteria with our advanced stock screening tool. Filter by financial metrics and performance indicators.</p>
+                    </div>
+                    <div style="text-align: center; margin-top: auto;">
+                        <a href="tools/stock-screener.html" class="btn btn-primary">Open Tool</a>
+                    </div>
+                </div>
+                
+                <!-- Coming Soon: Portfolio Analyzer -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div>
+                            <h3>Portfolio Analyzer</h3>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        <p>Track, analyze, and optimize your investment portfolio with risk assessment, diversification analysis, and performance metrics.</p>
+                    </div>
+                    <div style="text-align: center; margin-top: auto;">
+                        <span class="badge" style="background-color: var(--accent); padding: 0.3rem 0.8rem; border-radius: 20px; color: white; margin-bottom: 1rem; display: inline-block;">Coming Soon</span>
+                        <a href="#" class="btn btn-outline disabled">Open Tool</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.svg" alt="Zapwiser Logo">
+                    <h3>Zapwiser</h3>
+                    <p>Insightful market analysis and powerful financial tools</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Insights</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our weekly market insights</p>
+                    <form class="newsletter-form">
+                        <input type="email" name="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <div class="footer-newsletter-message" style="margin-top: 0.5rem; font-size: 0.85rem;"></div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Zapwiser. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/google-sheet-integration.js"></script>
+</body>
+</html>

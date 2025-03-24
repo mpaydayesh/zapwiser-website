@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights & Market Analysis | Zapwiser</title>
+    <meta name="description" content="Explore Zapwiser's market insights, weekly round-ups, and in-depth financial analysis.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/newsletter.css">
+    
+    <!-- Additional CSS for Blog Page -->
+    <style>
+        .blog-header {
+            background: linear-gradient(rgba(27, 47, 93, 0.8), rgba(58, 95, 160, 0.8)), url('https://via.placeholder.com/1600x400?text=Market+Insights');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .blog-container {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: 2rem;
+        }
+        
+        .blog-main {
+            padding-right: 2rem;
+        }
+        
+        .blog-sidebar {
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .blog-post {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .blog-post:last-child {
+            border-bottom: none;
+        }
+        
+        .post-image {
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        
+        .post-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .post-image:hover img {
+            transform: scale(1.02);
+        }
+        
+        .post-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .post-meta span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-meta i {
+            margin-right: 0.5rem;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--light-blue);
+            color: var(--navy);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-tags {
+            margin: 1.5rem 0;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            background-color: var(--light-gray);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-section h3 {
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .sidebar-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .recent-post {
+            display: flex;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .recent-post:last-child {
+            border-bottom: none;
+        }
+        
+        .recent-post-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .recent-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .recent-post-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .recent-post-date {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .categories-list {
+            list-style: none;
+        }
+        
+        .categories-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .categories-list span {
+            background-color: var(--light-gray);
+            border-radius: 20px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.8rem;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+            gap: 0.5rem;
+        }
+        
+        .page-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--navy);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .page-item.active {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+        
+        .page-item:hover {
+            background-color: var(--light-blue);
+            color: var(--white);
+        }
+        
+        @media (max-width: 992px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-main {
+                padding-right: 0;
+            }
+        }
+        
+        .newsletter-form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-form-row input[type="text"], .newsletter-form-row input[type="email"] {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
+        
+        .newsletter-form-row button[type="submit"] {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 1rem;
+            border-radius: 5px;
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="assets/images/logo.svg" alt="Zapwiser Logo">
+                    <span class="logo-text">Zapwiser</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Insights</a></li>
+                    <li><a href="tools.html">Tools</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Blog Header -->
+    <section class="blog-header">
+        <div class="container">
+            <h1>Market Insights & Analysis</h1>
+            <p>Expert commentary, weekly round-ups, and in-depth analysis to help you navigate the financial markets.</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="featured" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="blog-container">
+                <div class="blog-main">
+                    <!-- Blog Post 1 -->
+                    <article class="blog-post">
+                        <div class="post-image">
+                            <img src="https://via.placeholder.com/900x500?text=Fed+Rate+Decision" alt="Fed Rate Decision Impact">
+                        </div>
+                        <h2>Fed Rate Decision Impact Analysis</h2>
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> March 24, 2025</span>
+                            <span><i class="far fa-user"></i> Zapwiser Team</span>
+                            <span><i class="far fa-comment"></i> 8 Comments</span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="category-badge">Market Analysis</span>
+                            <span class="category-badge">Federal Reserve</span>
+                        </div>
+                        <p>The Federal Reserve's latest rate decision has sent ripples through the market. Here's our comprehensive analysis of what this means for different sectors and investment strategies.</p>
+                        <p>Markets responded with volatility as traders repositioned their portfolios in response to the Fed's updated economic projections and policy outlook. The central bank indicated that it expects to maintain higher rates for longer than previously anticipated, citing persistent inflationary pressures despite some cooling in recent data.</p>
+                        <p>This stance has several implications for investors across different asset classes:</p>
+                        <p><strong>Fixed Income:</strong> Bond yields adjusted higher immediately following the announcement, putting pressure on longer-duration assets. We're seeing particular vulnerability in the 5-10 year portion of the yield curve.</p>
+                        <p><strong>Equities:</strong> Rate-sensitive sectors such as utilities, real estate, and technology faced the steepest sell-offs, while financial services companies saw modest gains on the prospect of sustained higher net interest margins.</p>
+                        <div class="blog-tags">
+                            <span class="tag">#FederalReserve</span>
+                            <span class="tag">#InterestRates</span>
+                            <span class="tag">#MarketStrategy</span>
+                            <span class="tag">#Inflation</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Read Full Analysis</a>
+                    </article>
+                    
+                    <!-- Blog Post 2 -->
+                    <article class="blog-post">
+                        <div class="post-image">
+                            <img src="https://via.placeholder.com/900x500?text=Tech+Sector+Analysis" alt="Tech Sector Analysis">
+                        </div>
+                        <h2>Tech Sector: Overvalued or Opportunity?</h2>
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> March 20, 2025</span>
+                            <span><i class="far fa-user"></i> Alex Morgan</span>
+                            <span><i class="far fa-comment"></i> 12 Comments</span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="category-badge">Sector Analysis</span>
+                            <span class="category-badge">Technology</span>
+                        </div>
+                        <p>We examine recent valuations in the tech sector and identify potential opportunities amid market concerns about stretched multiples and AI hype.</p>
+                        <p>The technology sector has seen a significant divergence in performance over the past quarter, with AI-focused companies dramatically outperforming the broader tech universe. This has led to concerns about a potential bubble forming in certain segments, while creating potential value opportunities in overlooked tech subsectors.</p>
+                        <p>Our analysis breaks down current valuations across different technology industries, from semiconductors to software-as-a-service, comparing current multiples to historical averages and projected growth rates.</p>
+                        <div class="blog-tags">
+                            <span class="tag">#TechStocks</span>
+                            <span class="tag">#ArtificialIntelligence</span>
+                            <span class="tag">#Valuation</span>
+                            <span class="tag">#InvestmentOpportunities</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Read Full Analysis</a>
+                    </article>
+                    
+                    <!-- Blog Post 3 -->
+                    <article class="blog-post">
+                        <div class="post-image">
+                            <img src="https://via.placeholder.com/900x500?text=Emerging+Markets" alt="Emerging Markets Analysis">
+                        </div>
+                        <h2>Emerging Markets: The Next Frontier</h2>
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> March 18, 2025</span>
+                            <span><i class="far fa-user"></i> Sarah Chen</span>
+                            <span><i class="far fa-comment"></i> 5 Comments</span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="category-badge">Global Markets</span>
+                            <span class="category-badge">Emerging Markets</span>
+                        </div>
+                        <p>Discover why emerging markets are gaining attention from institutional investors and what it means for your portfolio.</p>
+                        <p>After several years of underperformance relative to developed markets, emerging economies are showing signs of accelerating growth and increasing institutional interest. Several factors are contributing to this renaissance, including moderating inflation in key markets, improving governance, and demographic advantages.</p>
+                        <p>Our research identifies several regions with particularly compelling prospects over the next 12-24 months, with a focus on countries implementing structural reforms and demonstrating fiscal discipline.</p>
+                        <div class="blog-tags">
+                            <span class="tag">#EmergingMarkets</span>
+                            <span class="tag">#GlobalInvesting</span>
+                            <span class="tag">#PortfolioDiversification</span>
+                            <span class="tag">#Growth</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Read Full Analysis</a>
+                    </article>
+                    
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <a href="#" class="page-item active">1</a>
+                        <a href="#" class="page-item">2</a>
+                        <a href="#" class="page-item">3</a>
+                        <a href="#" class="page-item"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="blog-sidebar">
+                    <!-- Search Widget -->
+                    <div class="sidebar-section">
+                        <h3>Search</h3>
+                        <form class="search-form">
+                            <div style="display: flex;">
+                                <input type="text" placeholder="Search insights..." style="flex: 1; padding: 0.8rem; border: 1px solid #eee; border-radius: 5px 0 0 5px; border-right: none;">
+                                <button type="submit" style="background: var(--accent); color: white; border: none; padding: 0 1rem; border-radius: 0 5px 5px 0;"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Recent Posts Widget -->
+                    <div class="sidebar-section">
+                        <h3>Recent Posts</h3>
+                        <div class="recent-post">
+                            <div class="recent-post-image">
+                                <img src="https://via.placeholder.com/100?text=ESG" alt="ESG Investing">
+                            </div>
+                            <div class="recent-post-content">
+                                <h4><a href="#">ESG Investing: More Than a Trend</a></h4>
+                                <div class="recent-post-date">March 15, 2025</div>
+                            </div>
+                        </div>
+                        <div class="recent-post">
+                            <div class="recent-post-image">
+                                <img src="https://via.placeholder.com/100?text=Crypto" alt="Crypto Regulation">
+                            </div>
+                            <div class="recent-post-content">
+                                <h4><a href="#">Cryptocurrency Regulation: What's Next?</a></h4>
+                                <div class="recent-post-date">March 12, 2025</div>
+                            </div>
+                        </div>
+                        <div class="recent-post">
+                            <div class="recent-post-image">
+                                <img src="https://via.placeholder.com/100?text=Inflation" alt="Inflation Impact">
+                            </div>
+                            <div class="recent-post-content">
+                                <h4><a href="#">Inflation's Impact on Consumer Discretionary</a></h4>
+                                <div class="recent-post-date">March 8, 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Categories Widget -->
+                    <div class="sidebar-section">
+                        <h3>Categories</h3>
+                        <ul class="categories-list">
+                            <li>
+                                <a href="#">Market Analysis</a>
+                                <span>12</span>
+                            </li>
+                            <li>
+                                <a href="#">Investment Strategies</a>
+                                <span>8</span>
+                            </li>
+                            <li>
+                                <a href="#">Sector Deep Dives</a>
+                                <span>9</span>
+                            </li>
+                            <li>
+                                <a href="#">Global Markets</a>
+                                <span>6</span>
+                            </li>
+                            <li>
+                                <a href="#">Macroeconomic Trends</a>
+                                <span>7</span>
+                            </li>
+                            <li>
+                                <a href="#">Weekly Round-ups</a>
+                                <span>10</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Newsletter Widget -->
+                    <div class="sidebar-section">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe to get our weekly market insights delivered to your inbox.</p>
+                        <form class="sidebar-newsletter" style="margin-top: 1rem;">
+                            <input type="email" placeholder="Your email address" required style="width: 100%; padding: 0.8rem; border: 1px solid #eee; border-radius: 5px; margin-bottom: 1rem;">
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Tags Widget -->
+                    <div class="sidebar-section">
+                        <h3>Popular Tags</h3>
+                        <div class="blog-tags">
+                            <span class="tag">#MarketAnalysis</span>
+                            <span class="tag">#Stocks</span>
+                            <span class="tag">#FederalReserve</span>
+                            <span class="tag">#Inflation</span>
+                            <span class="tag">#Tech</span>
+                            <span class="tag">#Investing</span>
+                            <span class="tag">#GlobalMarkets</span>
+                            <span class="tag">#ESG</span>
+                            <span class="tag">#Sectors</span>
+                            <span class="tag">#Trends</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <h2>Never Miss a Market Update</h2>
+            <p>Subscribe to our free newsletter and get the latest market insights and analysis delivered straight to your inbox every week.</p>
+            <form class="newsletter-form" id="newsletter-form">
+                <div class="newsletter-form-row">
+                    <input type="text" name="firstName" placeholder="First Name" required>
+                    <input type="text" name="lastName" placeholder="Last Name" required>
+                </div>
+                <div class="newsletter-form-row">
+                    <input type="email" name="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </div>
+            </form>
+            <div id="newsletter-message" class="newsletter-message" style="display: none;"></div>
+            <div class="form-note" style="margin-top: 1rem; font-size: 0.9rem;">
+                <p>We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="logo">
+                        <img src="assets/images/logo.svg" alt="Zapwiser Logo" style="height: 30px;">
+                        <span class="logo-text">Zapwiser</span>
+                    </div>
+                    <p>Your trusted source for weekly market insights, in-depth analysis, and interactive financial tools.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Insights</a></li>
+                        <li><a href="tools.html">Tools</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Market Data</a></li>
+                        <li><a href="#">Glossary</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p>Have questions or feedback? We'd love to hear from you.</p>
+                    <a href="about.html#contact" class="btn btn-primary">Get in Touch</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Zapwiser. All rights reserved.</p>
+                <p><small>Disclaimer: All information provided is for educational purposes only and does not constitute financial advice.</small></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/google-sheet-integration.js"></script>
+</body>
+</html>
